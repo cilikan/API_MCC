@@ -39,7 +39,7 @@ namespace API.Base
             return Ok(result);
         }
         [HttpGet]
-        public IEnumerable GetAll(Entity entity)
+        public IEnumerable GetAll()
         {
             return repository.Get();
         }
