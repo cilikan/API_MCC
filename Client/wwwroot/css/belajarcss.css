@@ -1,0 +1,43 @@
+﻿body{
+
+}
+/*.one{
+    width: 200px;
+    height: 200px;
+    background-color:red;
+}
+.two {
+    width: 200px;
+    height: 200px;
+    background-color: green;
+}
+.three {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+}*/
+.row {
+    position: relative;
+    margin: 5px;
+}
+.col{
+    position: relative;
+    margin:10px;
+    text-align:center;
+    font-size:larger;
+}
+.tbtitle{
+    text-align:center;
+    font-size:30px;
+}
+.img{
+    width=50px;
+    height=50px;
+}
+
+/*.btn {
+    width: 620px;
+    height: 50px;
+    margin-left: 30px;
+    margin-top: 22px;
+}*/

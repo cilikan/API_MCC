@@ -55,20 +55,22 @@ namespace API.Controllers.NewControllers
             employeeRepository.Login(loginVM);
             return Ok();
         }*/
-        [Authorize(Roles = "Director, Manager")]
+        /*[Authorize(Roles = "Director, Manager")]*/
         [HttpGet("AllRegisteredData")]
         public ActionResult<Employee> GetAll()
         {
             var result = employeeRepository.GetAll();
             if (result == null)
             {
-                return NotFound(new { status = HttpStatusCode.NotFound, 
+                /*return NotFound(new { status = HttpStatusCode.NotFound, 
                     result = result, 
-                    message = "Data Masih Kosong" });
+                    message = "Data Masih Kosong" });*/
+                return NotFound(result);
             }
-            return Ok(new { status = HttpStatusCode.OK, 
+            /*return Ok(new { status = HttpStatusCode.OK, 
                 result = result, 
-                message = "Semua data berhasil ditampilkan" });
+                message = "Semua data berhasil ditampilkan" });*/
+            return Ok(result);
         }
         [HttpGet("TestCORS")]
         public ActionResult TestCORS()

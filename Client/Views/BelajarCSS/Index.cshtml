@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    //Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>BelajarCSS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/belajarcss.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Grid -->
+    <div class="container">
+        <div class="row">
+            <div class="col" onclick="ubahB1K2()">Baris 1 Kolom 1</div>
+            <div class="col">Baris 1 Kolom 2</div>
+        </div>
+        <div class="row">
+            <div class="col">Baris 2 Kolom 1</div>
+            <div class="col">Baris 2 Kolom 2</div>
+        </div>
+        <div class="row">
+            <div class="col"><button type="button" class="btn btn-primary btn-lg" onclick="btnPrimary()">Baris 3 Kolom 1</button></div>
+            <div class="col">Baris 3 Kolom 2</div>
+        </div>
+        <div class="row">
+            <div class="col"><button type="button" class="btn btn-secondary btn-lg" onclick="btnSec()">Baris 4 Kolom 1</button></div>
+            <div class="col">Baris 4 Kolom 2</div>
+        </div>
+        <div class="row">
+            <div class="col"><button type="button" class="btn btn-success btn-lg">Baris 4 Kolom 1</button></div>
+            <div class="col">Baris 4 Kolom 2</div>
+        </div>
+    </div>
+    <!-- Grid -->
+    <!-- Table 1 -->
+    @*<div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="tbtitle" scope="col" colspan="6">Starwars List</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">NO</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Height</th>
+                        <th scope="col">Mass</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Film Instance</th>
+                    </tr>
+                </thead>
+                <tbody id="listStarwars">
+                </tbody>
+            </table>
+        </div>*@
+    <!-- Table 1 -->
+    <!-- Table 2 -->
+<div class="container">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#form-register">
+        Add New Data
+    </button>
+
+    <table class="table dt-responsive nowrap" id="tableEmployee">
+        <thead class="thead-dark">
+            <tr>
+                <th class="tbtitle" scope="col" colspan="6">Employee List</th>
+            </tr>
+            <tr>
+                <th scope="col">NIK</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="form-register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Register New Employee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>NIK</label>
+                            <input class="form-control" id="nik" placeholder="Enter NIK">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
+                            <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small>
+                        </div>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input class="form-control" id="firstName" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input class="form-control" id="lastName" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input class="form-control" id="phone" placeholder="Phone Number">
+                        </div>
+                    </div>
+                    <div class="modal-footer border-top-0 d-flex justify-content-center">
+                        <button onclick="Insert()" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+    <!-- Modal info -->
+    <div class="modal fade" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Table 2 -->
+</body>
+</html>
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.print.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+}

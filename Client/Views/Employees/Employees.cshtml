@@ -1,0 +1,265 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- Button + Table  -->
+<div class="card mb-4">
+    <div class="card-body">
+        <button id="buttonSubmit" type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#form-register" data-placement="top" title="Register Employee">
+            <i class="fas fa-user-plus"></i>
+        </button>
+        <table style="width:100%" class="table dt-responsive nowrap mt-2" id="tableEmployee">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="tbtitle text-center" scope="col" colspan="7">Employee List</th>
+                </tr>
+                <tr>
+                    <th scope="col">NO</th>
+                    <th scope="col">NIK</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Chart -->
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <div id="chart-1">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <div id="chart-2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 mt-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div id="chart-3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Register -->
+<div class="modal fade" id="form-register" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createAccount" class="needs-validation" novalidate>
+                    <div class="form-group text-left">
+                        <label for="nik">NIK</label>
+                        <input type="text" class="form-control" id="nik" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your ID number.
+                        </div>
+                    </div>
+                    <div class="form-row name-input">
+                        <div class="col">
+                            <div class="form-group text-left">
+                                <label for="fname">First Name</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter your name.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group text-left">
+                                <label for="lname">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter your name.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group gender-input">
+                        <label for="gender">Gender</label>
+                        <select id="gender" class="form-control">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group email-input">
+                        <label for="Email">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email@mii.co.id" required>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Enter a valid E-Mail Address!.
+                        </div>
+                    </div>
+                    <div class="form-group phone-input">
+                        <label for="Phone">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your phone number.
+                        </div>
+                    </div>
+                    <div class="form-group salary input">
+                        <label for="salary">Salary</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Rp.</div>
+                            </div>
+                            <input type="text" class="form-control" id="salary" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Please enter your salary.
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    @*<button type="button" class="btn btn-info reset-form" onclick="return resetFrom()">Reset</button>*@
+                    <button type="button" class="btn btn-primary add-btn" onclick="return Insert()">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Update -->
+<div class="modal fade" id="form-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="UpdateAccount" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="nik">NIK</label>
+                        <input type="text" class="form-control" id="updatenik" value="" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control" id="updatefirstName" placeholder="First name" value="" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" id="updatelastName" placeholder="Last name" value="" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email address</label>
+                        <input type="email" class="form-control" id="updateemail" aria-describedby="emailHelp" value="" required>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <div class="invalid-feedback">
+                            Please choose a username.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone">Phone Number</label>
+                        <input type="text" class="form-control" id="updatephone" value="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone">Salary</label>
+                        <input type="number" class="form-control" id="updatesalary" value="" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info" onclick="Update()"> Update </button>
+                </form>
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info" onclick="Update()"> Update </button>
+                </div>*@
+        </div>
+    </div>
+</div>
+<!-- Modal info -->
+<div class="modal fade" id="DetailEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Detail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row datainfo">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            var button = document.querySelector('.add-btn')
+
+            button.addEventListener('click', function () {
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('click', function (event) {
+                        console.log(form.checkValidity() === false && ($('#email').val().length != 0) === false)
+                        if (form.checkValidity() === false && ($('#email').val().length != 0) === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        } form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        }, false);
+    })();
+</script>
+
+@section Scripts{
+    <script src="~/js/Employee.js"></script>
+}

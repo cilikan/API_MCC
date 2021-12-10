@@ -65,9 +65,18 @@ namespace API
 
                 };
             });
-            services.AddCors(c => 
+            services.AddCors(c =>
             {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+                c.AddDefaultPolicy(
+                 builder =>
+                 {
+                     builder.WithOrigins("https://localhost:44367")
+                     .AllowAnyHeader()
+                     .AllowAnyMethod()
+                     .AllowCredentials();
+                 });
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
             });
         }
 
@@ -79,7 +88,6 @@ namespace API
                 app.UseDeveloperExceptionPage();
             }
             app.UseHttpsRedirection();
-
             app.UseRouting();
             app.Use(async (context, next) => {
                 await next();
@@ -92,9 +100,10 @@ namespace API
                     await context.Response.WriteAsync("Anda tidak diijinkan untuk menggunakan fitur ini, Akses ditolak");
                 }
             });
+            app.UseCors("AllowOrigin");
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseCors(options => options.AllowAnyOrigin());
+            /*app.UseCors(options => options.AllowAnyOrigin());*/
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

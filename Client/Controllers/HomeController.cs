@@ -23,6 +23,10 @@ namespace Client.Controllers
             return View();
         }
 
+        public IActionResult BelajarCSS()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
