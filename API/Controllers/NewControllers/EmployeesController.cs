@@ -33,7 +33,8 @@ namespace API.Controllers.NewControllers
             var masuk = employeeRepository.Register(registerVM);
             if (masuk == 1)
             {
-                return Ok(new { status = HttpStatusCode.OK, result = masuk, message = "Pendaftaran Berhasil" });
+                /*return Ok(new { status = HttpStatusCode.OK, result = masuk, message = "Pendaftaran Berhasil" });*/
+                return Ok(masuk);
             }
             else if (masuk == 2)
             {

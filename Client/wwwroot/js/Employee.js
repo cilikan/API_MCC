@@ -559,3 +559,51 @@ var options3 = {
 }
 var chart3 = new ApexCharts(document.querySelector("#chart-3"), options3);
 chart3.render();
+
+function InsertRegister() {
+    var obj = new Object(); //sesuaikan sendiri nama objectnya dan beserta isinya
+    //ini ngambil value dari tiap inputan di form nya
+    obj.nik = $("#inputNIK").val();
+    obj.firstName = $("#inputFirstName").val();
+    obj.lastName = $("#inputLastName").val();
+    obj.phone = $("#inputPhone").val();
+    obj.email = $("#inputEmail").val();
+    obj.password = $("#inputPassword").val();
+    obj.salary = $("#inputSalary").val();
+    //obj.birthdate = $("#inputdateBirth").val();
+    obj.gpa = $("#inputGPA").val();
+    /*var gender = $('#inputGender input:radio:checked').val()
+    obj.gender = gender;*/
+    obj.degree = $("#inputDegree").val();
+    obj.universityId = $("#inputUniversityId").val();
+
+    console.log(obj);
+    $.ajax({
+        type: "POST",
+        url: "/Employees/PostRegister",
+        dataType: 'json',
+        data: obj
+    }).done((result) => {
+        console.log(result);
+        if (result == 200) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil Disimpan',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } else if (result == 400) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Gagal Disimpan'
+            })
+        }
+    }).fail((error) => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Gagal Disimpan'
+        })
+    })
+}

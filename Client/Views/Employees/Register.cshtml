@@ -1,0 +1,142 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+                        <form class="user needs-validation" novalidate>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="inputNIK"
+                                       placeholder="NIK">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="inputFirstName"
+                                           placeholder="First Name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user" id="inputLastName"
+                                           placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="inputPhone"
+                                           placeholder="Phone">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user" id="inputSalary"
+                                           placeholder="Salary">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" id="inputEmail"
+                                       placeholder="Email Address">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="inputDegree"
+                                           placeholder="Degree">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user" id="inputGPA"
+                                           placeholder="GPA">
+                                </div>
+                            </div>
+                            @*<div class="form-row genderbirt-input">
+                                <div class="col m-auto">
+                                    <div class="form-group gender-input text-center" id="inputGender">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" value="Male">
+                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" value="Female">
+                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group dateBirth-input">
+                                        <input type="date" class="form-control form-control-user" id="inputdateBirth" aria-describedby="birthHelp" placeholder="BirtDate" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Enter a your birth date!.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>*@
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-user" id="inputPassword"
+                                       placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="inputUniversityId"
+                                       placeholder="University Id">
+                            </div>
+                            <button type="button" onclick="return Validate()" class="btn btn-primary btn-user btn-block add-btn">
+                                Register Account
+                            </button>
+                        </form>
+                        <hr>
+                        @*<div class="text-center">
+                            <a class="small" href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="login.html">Already have an account? Login!</a>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function Validate() {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('click', function (event) {
+                    console.log(form.checkValidity() === false && ($('#inputEmail').val().length != 0) === false)
+                    if (form.checkValidity() === false && ($('#inputEmail').val().length != 0) === false) {
+                        form.classList.add('was-validated');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Submit Gagal!'
+                        })
+                        event.preventDefault();
+                        event.stopPropagation();
+                        return false;
+                    } else {
+                        InsertRegister()
+                    }
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+@section Scripts{
+    <script src="~/js/Employee.js"></script>
+}
+
