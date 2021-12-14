@@ -71,7 +71,9 @@ namespace API.Controllers.NewControllers
 
                 var idtoken = new JwtSecurityTokenHandler().WriteToken(token);
                 claims.Add(new Claim("TokenSecurity", idtoken.ToString()));
-                return Ok(new { status = HttpStatusCode.OK, idtoken, profile, Message = $"Login Berhasil" });
+
+                //return Ok(new { status = HttpStatusCode.OK, idtoken, profile, Message = $"Login Berhasil" });
+                return Ok(new JWTokenVM { Token = idtoken, Messages = "Login Success" });
                 //return Ok(new { status = HttpStatusCode.OK, result = profile, message = "Login Berhasil" });
                 //return RedirectToAction("GetProfile", "Accounts", loginVM);
             }
@@ -189,5 +191,6 @@ namespace API.Controllers.NewControllers
                 return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Password Gagal diganti" });
             }
         }
+       
     }
 }

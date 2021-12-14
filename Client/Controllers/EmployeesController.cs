@@ -21,6 +21,7 @@ namespace Client.Controllers
             this.employeeRepository = repository;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View("Employees");
@@ -31,11 +32,11 @@ namespace Client.Controllers
             /*return View("Employees");*/
             return View();
         }
-        /*public IActionResult Login()
+        public IActionResult Login()
         {
-            *//*return View("Employees");*//*
+            /*return View("Employees");*/
             return View();
-        }*/
+        }
         [HttpGet]
         public async Task<JsonResult> GetRegister()
         {

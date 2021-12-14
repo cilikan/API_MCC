@@ -607,3 +607,27 @@ function InsertRegister() {
         })
     })
 }
+
+function Login() {
+    var obj = new Object(); 
+    obj.email = $("#loginEmail").val(),
+        obj.password = $("#loginPassword").val(),
+        console.log(obj),
+        $.ajax({
+            type: "POST",
+            url: "/Accounts/Auth",
+            dataType: 'json',
+            data: obj,
+            success: function (result) {
+                console.log(result)
+                window.location.href = result;
+            },
+            error: function (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'login Gagal!'
+                })
+            }
+        })
+}
